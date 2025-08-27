@@ -35,6 +35,7 @@ public class ClienteService {
 
     public Cliente atualizarCliente(Long id, Cliente cliente) {
         Cliente clienteSalvo = buscarClientePorId(id);
+//      O copyProperties é um metodo estatico que faz com que nao seja necessario instanciar a classe BeanUtils
         BeanUtils.copyProperties(cliente, clienteSalvo, "id");
         return clienteRepository.save(clienteSalvo);
     }
