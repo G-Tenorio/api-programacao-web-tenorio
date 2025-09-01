@@ -11,6 +11,15 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String cidade;
+    @Column(length = 9, nullable = false)
+    private String cep;
+    @Column(length = 80)
+    private String rua;
+
+    @Transient
+    private String endereco;
+
 
     public String getNome() {
         return nome;
@@ -26,6 +35,11 @@ public class Cliente {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEndereço(){
+        this.endereco = this.rua+ ", " + this.cidade + ", " + this.cep;
+        return endereco;
     }
 
     @Override
